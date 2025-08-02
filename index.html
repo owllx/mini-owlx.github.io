@@ -1,36 +1,20 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мини-приложение</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Пульт управления</title>
 </head>
 <body>
-    <h1>Управление сохранением удаленных сообщений</h1>
-    <button id="startButton">Запуск</button>
-    <button id="stopButton">Остановка</button>
+    <h1>Пульт управления</h1>
+    <button onclick="sendAction('start')">Запуск</button>
+    <button onclick="sendAction('stop')">Остановка</button>
 
     <script>
-        document.getElementById('startButton').onclick = function() {
-            // Здесь будет код для отправки команды запуска
-        };
-
-        document.getElementById('stopButton').onclick = function() {
-            // Здесь будет код для отправки команды остановки
-        };
+        function sendAction(action) {
+            const data = { action }; // Создаём объект с командой
+            Telegram.WebApp.sendData(JSON.stringify(data)); // Отправляем данные боту
+        }
     </script>
 </body>
 </html>
